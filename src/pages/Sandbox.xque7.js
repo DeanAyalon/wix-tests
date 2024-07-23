@@ -1,10 +1,6 @@
-// API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
-
-$w.onReady(function () {
-    // Write your JavaScript here
-
-    // To select an element by ID use: $w('#elementID')
-
-    // Click 'Preview' to run your code
-});
+$w.onReady(() => {
+    // https://forum.wixstudio.com/t/contact-form-field/61098
+    $w('#input').onCustomValidation((value, reject) => {
+        if (!value.toLocaleLowerCase().includes('london')) reject('The word London is missing!')
+    })
+})
