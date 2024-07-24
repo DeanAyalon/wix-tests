@@ -3,7 +3,15 @@ import wixLocation from 'wix-location-frontend'
 
 const path = wixLocation.path.join('/')
 
-// Get the help thread related to the current page
+$w.onReady(() => {
+    // Runs when page is loaded and data is fetched
+    helpThreadPromise.then(res => {
+        if (!res) return;
+        res.forumPromise.then(forums => forums.length && updateThreadBtn(forums.items[0], res.thread))
+    }, console.error)
+})
+
+// Called before page loads - Get the help thread related to the current page
 const helpThreadPromise = wixData.query('HelpThreads').eq('path', path).find().then(res => {
     if (!res.length) return;
     const thread = res.items[0], 
@@ -15,19 +23,20 @@ const helpThreadPromise = wixData.query('HelpThreads').eq('path', path).find().t
     }
 }, console.error)
 
-$w.onReady(() => {
-    // Runs when page is loaded and data is fetched
-    helpThreadPromise.then(res => {
-        if (!res) return;
-        res.forumPromise.then(forums => forums.length && updateThreadBtn(forums.items[0], res.thread))
-    }, console.error)
-})
-
 // Runs when data was fetched from forums and threads, and page is loaded
 function updateThreadBtn(forum, thread) {
     console.log('Updating button', forum, thread);
     $w('#thread').icon = forum.icon
     $w('#thread').link = thread.source
     $w('#thread').label = thread.label
-    $w('#thread').style.backgroundColor = (thread.bgColor ?? 'black')
+    $w('#thread').style.backgroundColor = 'red'
+    console.log($w('#thread').style)
+    // const {style} = forum
+    // console.log(style, $w('#thread').style)
+    // for (const key in style) {
+    //     console.log(key, style[key], $w('#thread').style[key])
+    //     $w('#thread').style[key] = style[key]
+    //     console.log($w('#thread').style[key])
+    //     console.log($w('#thread').style)
+    // }
 }
