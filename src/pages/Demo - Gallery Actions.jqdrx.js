@@ -10,7 +10,6 @@ $w.onReady(() => {
             return res.items[0]
         })
 
-        console.log(img)
         if (img.redirect) wixLocation.to(img.link)
         else wixWindow.openLightbox('Gallery Image', img)
     })
