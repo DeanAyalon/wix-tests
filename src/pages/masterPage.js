@@ -26,17 +26,11 @@ const helpThreadPromise = wixData.query('HelpThreads').eq('path', path).find().t
 // Runs when data was fetched from forums and threads, and page is loaded
 function updateThreadBtn(forum, thread) {
     console.log('Updating button', forum, thread);
+    for (const key in forum.style) $w('#thread').style[key] = forum.style[key]
     $w('#thread').icon = forum.icon
     $w('#thread').link = thread.source
     $w('#thread').label = thread.label
-    $w('#thread').style.backgroundColor = 'red'
+    // For some reason, this does not work here
+    // for (const key in forum.style) $w('#thread').style[key] = forum.style[key]
     console.log($w('#thread').style)
-    // const {style} = forum
-    // console.log(style, $w('#thread').style)
-    // for (const key in style) {
-    //     console.log(key, style[key], $w('#thread').style[key])
-    //     $w('#thread').style[key] = style[key]
-    //     console.log($w('#thread').style[key])
-    //     console.log($w('#thread').style)
-    // }
 }
