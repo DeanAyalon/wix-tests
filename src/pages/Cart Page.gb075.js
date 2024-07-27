@@ -1,10 +1,9 @@
-// API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
+import wixLocation from 'wix-location-frontend'
+import {cart} from 'wix-stores-frontend'
 
-$w.onReady(function () {
-    // Write your JavaScript here
-
-    // To select an element by ID use: $w('#elementID')
-
-    // Click 'Preview' to run your code
-});
+// https://forum.wixstudio.com/t/create-a-direct-link-that-already-contains-the-discount-code/61202
+const couponQuery = wixLocation.query.coupon
+console.log({couponQuery})
+if (couponQuery) cart.applyCoupon(couponQuery).then(console.log, console.error)
+// Got coupon `TESTCOUPON` made, giving 10% off
+// This is not working, for some reason resulting in an INVALID_FILTER error
