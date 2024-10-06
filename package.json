@@ -7,6 +7,7 @@
   },
   "scripts": {
     "postinstall": "wix sync-types",
+    "preview": "/bin/sh preview.sh",
     "dev": "wix dev",
     "lint": "eslint ."
   }
