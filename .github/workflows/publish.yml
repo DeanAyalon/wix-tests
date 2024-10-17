@@ -1,10 +1,11 @@
 name: Publish Site
 run-name: ${{ github.actor }} has updated the main branch, publishing site
-on: [push]
+on: 
+  push:
+    branches: main
 jobs:
   Publish:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Get Wix CLI?!!!!
         run: npm i -g @wix/cli
