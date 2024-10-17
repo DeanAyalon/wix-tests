@@ -3,7 +3,6 @@
 # Context
 cd "$(dirname "$0")"
 
-
 # Preview source
 SRC=local
 [ "$1" = "-r" ] && SRC=remote

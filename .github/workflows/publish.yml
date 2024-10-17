@@ -1,0 +1,18 @@
+name: Publish Site
+run-name: ${{ github.actor }} has updated the main branch, publishing site
+on: [push]
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Get Wix CLI
+        run: npm i -g @wix/cli
+      - name: Login
+        run: wix login --api-key ${{ secrets.WIX_CLI }}
+      - name: Check out site config
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: wix.config.json
+      - name: Publish
+        run: wix publish --source remote -y
