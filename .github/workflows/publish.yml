@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Get Wix CLI
+      - name: Get Wix CLI?!!!!
         run: npm i -g @wix/cli
       - name: Login
         run: wix login --api-key ${{ secrets.WIX_CLI }}
