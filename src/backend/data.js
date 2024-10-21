@@ -1,4 +1,4 @@
-export function Input_beforeInsert(item, context) {
+export function Input_beforeInsert(item) {
     item.test = 'test'
     return item
 }
