@@ -1,11 +1,6 @@
 import {echoMessage} from 'backend/icess.web'
-$w.onReady(function () {
-    $w("#button").onClick(callMessage);
 
-});
-
-
-function callMessage() {
-    const msg = echoMessage("Hey we are testing..");
-    console.log(msg)    
-}
+$w("#button").onClick(async () => { // callMessage
+    const msg = await echoMessage("Hey we are testing..");
+    console.log(msg)
+})
