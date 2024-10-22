@@ -1,10 +1,8 @@
-// API Reference: https://www.wix.com/velo/reference/api-overview/introduction
-// “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
+import wixLocation from 'wix-location-frontend'
 
-$w.onReady(function () {
-    // Write your JavaScript here
+const anchor = wixLocation.query['anchor']
 
-    // To select an element by ID use: $w('#elementID')
-
-    // Click 'Preview' to run your code
-});
+$w.onReady(() => {
+    // @ts-ignore
+    if (anchor) $w('#' + anchor).scrollTo()
+})
