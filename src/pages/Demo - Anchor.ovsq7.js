@@ -2,7 +2,7 @@ import wixLocation from 'wix-location-frontend'
 
 const anchor = wixLocation.query['anchor']
 
-$w.onReady(() => {
+// $w.onReady(() => {
     // @ts-ignore
     if (anchor) $w('#' + anchor).scrollTo()
-})
+// })
