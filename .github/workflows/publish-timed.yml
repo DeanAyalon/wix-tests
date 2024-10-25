@@ -27,7 +27,7 @@ jobs:
 
       - name: List files
         run: > 
-          ls -a
+          ls -a;
           ls -l .github/scripts
 
       - name: Mark timestamp
