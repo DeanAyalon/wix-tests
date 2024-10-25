@@ -12,3 +12,6 @@ commit=$(git rev-parse HEAD)
 file=src/public/release.js
 head -n -1 $file > $file
 echo "export const timestamp = '$timestamp', commit = '$commit', run = '$RUN'" >> $file
+
+# Print release.js
+cat $file
