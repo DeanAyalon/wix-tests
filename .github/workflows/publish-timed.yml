@@ -20,8 +20,8 @@ jobs:
       - name: Check out site source
         uses: actions/checkout@v4
         with:
-          sparse-checkout: >
-            '.github/scripts'
+          sparse-checkout: |
+            .github
             src
             wix.config.json            
 
