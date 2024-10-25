@@ -1,0 +1,31 @@
+name: Publish Site with Timestamp
+run-name: ${{ github.actor }} has updated the timestamp branch, marking time and publishing site
+on: 
+  push:
+    branches: timestamp
+    paths:
+      - 'src/**'
+      - wix.config.json
+      - '!**.md'
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Wix CLI
+        run: npm i -g @wix/cli
+      - name: Login
+        run: wix login --api-key ${{ secrets.WIX_CLI }}
+        
+      - name: Check out site source
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: >
+            .github/scripts
+            src
+            wix.config.json            
+
+      - name: Mark timestamp
+        run: ./.github/scripts/stamp.sh
+          
+      - name: Publish
+        run: wix publish --source local -y
