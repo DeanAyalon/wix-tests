@@ -10,7 +10,8 @@ commit=$(git rev-parse HEAD)
 
 # Update release.js
 file=src/public/release.js
-head -n -1 $file > $file
+head -n -1 $file > tmp.js       # Remove last row
+mv tmp.js $file
 echo "export const timestamp = '$timestamp', commit = '$commit', run = '$RUN'" >> $file
 
 # Print release.js
