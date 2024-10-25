@@ -7,6 +7,7 @@ on:
       - 'src/**'
       - wix.config.json
       - '!**.md'
+      - .github/workflows/publish-timed.yml
 jobs:
   Publish:
     runs-on: ubuntu-latest
