@@ -15,14 +15,19 @@ jobs:
         run: npm i -g @wix/cli
       - name: Login
         run: wix login --api-key ${{ secrets.WIX_CLI }}
-        
+
       - name: Check out site source
         uses: actions/checkout@v4
         with:
           sparse-checkout: >
-            .github/scripts
-            src
+            .github/scripts/**
+            src/**
             wix.config.json            
+
+      - name: List files
+        run: > 
+          ls -a
+          ls -l .github/scripts
 
       - name: Mark timestamp
         run: ./.github/scripts/stamp.sh
