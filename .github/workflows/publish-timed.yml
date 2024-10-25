@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: >
-            .github/scripts
+            '.github/scripts'
             src
             wix.config.json            
 
