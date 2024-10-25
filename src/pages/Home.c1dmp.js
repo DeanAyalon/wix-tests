@@ -7,4 +7,4 @@ console.log(`Welcome to my demo website!
     In fact, this log message was written for the sole purpose of testing it :)`)
 
 $w('#release').text = `Timestamp: ${timestamp}\nCommit: ${commit}\nRun ID: ${run}`
-$w('#workflow').onClick(() => wixLocation.to('https://github.com/DeanAyalon/wix-tests/actions/runs/' + run))
+$w('#workflow').link = 'https://github.com/DeanAyalon/wix-tests/actions/runs/' + run

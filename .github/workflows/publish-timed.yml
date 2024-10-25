@@ -1,8 +1,8 @@
 name: Publish Site with Timestamp
-run-name: ${{ github.actor }} has updated the timestamp branch, marking time and publishing site
+run-name: ${{ github.actor }} has updated the main branch, publishing site with timestamp
 on: 
   push:
-    branches: timestamp
+    branches: main
     paths:
       - 'src/**'
       - wix.config.json
@@ -25,11 +25,6 @@ jobs:
             src
             wix.config.json            
             .github
-
-      - name: List files
-        run: > 
-          ls -a;
-          ls -l .github/scripts
 
       - name: Mark timestamp
         run: >
