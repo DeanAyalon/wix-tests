@@ -8,6 +8,7 @@ on:
       - wix.config.json
       - '!**.md'
       - .github/workflows/publish-timed.yml
+      - .github/scripts/stamp.sh
 jobs:
   Publish:
     runs-on: ubuntu-latest
@@ -21,9 +22,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github
             src
             wix.config.json            
+            .github
 
       - name: List files
         run: > 
@@ -31,7 +32,9 @@ jobs:
           ls -l .github/scripts
 
       - name: Mark timestamp
-        run: ./.github/scripts/stamp.sh
+        run: >
+          export RUN=${{ github.run_id }};
+          ./.github/scripts/stamp.sh
           
       - name: Publish
         run: wix publish --source local -y

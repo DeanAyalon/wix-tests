@@ -1,4 +1,4 @@
-import { timestamp, commit } from "public/release"
+import { timestamp, commit, run } from "public/release"
 import wixLocation from 'wix-location-frontend'
 
 console.log(`Welcome to my demo website!
@@ -6,5 +6,5 @@ console.log(`Welcome to my demo website!
     This site is published automatically on commit using GitHub Actions
     In fact, this log message was written for the sole purpose of testing it :)`)
 
-$w('#timestamp').text = `Timestamp: ${timestamp}\nCommit: ${commit}`
-$w('#timestamp').onClick(() => wixLocation.to('https://github.com/deanayalon/wix-tests/tree/' + commit))
+$w('#release').text = `Timestamp: ${timestamp}\nCommit: ${commit}\nRun ID: ${run}`
+$w('#workflow').onClick(() => wixLocation.to('https://github.com/DeanAyalon/wix-tests/actions/runs/' + run))
