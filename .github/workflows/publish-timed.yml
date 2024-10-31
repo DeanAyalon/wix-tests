@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Get Wix CLI
         run: npm i -g @wix/cli
-      - name: Login
+      - name: Login to Wix
         run: wix login --api-key ${{ secrets.WIX_CLI }}
 
       - name: Check out site source
@@ -23,13 +23,13 @@ jobs:
         with:
           sparse-checkout: |
             src
-            wix.config.json            
+            wix.config.json
             .github
 
       - name: Mark timestamp
         run: >
           export RUN=${{ github.run_id }};
           ./.github/scripts/stamp.sh
-          
+
       - name: Publish
         run: wix publish --source local -y

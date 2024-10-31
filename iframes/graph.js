@@ -142,6 +142,8 @@ branch.main.merge(branch.feature, 'Color GitGraph')
 branch.feature
     .commit('Design a more gitflow-like graph due to API limitations')
     .merge(branch.main, "Merge branch 'feature/gitgraph'")
+branch.main
+    .commit('Comments and minor changes to publish workflows')
 
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')

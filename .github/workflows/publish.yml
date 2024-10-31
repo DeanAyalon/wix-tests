@@ -1,20 +1,20 @@
 name: Publish Site
 run-name: ${{ github.actor }} has updated the main branch, publishing site
-on: 
+on:
   push:
     branches: main
     paths:
-      - 'src/**'
-      - wix.config.json
-      - '!**.md'
-      - .github/workflows/publish.yml
+      - 'src/**'                        # Code changes
+      - wix.config.json                 # UI changes
+      - .github/workflows/publish.yml   # Changes to this workflow
+      - '!**.md'                        # Ignore documentation
 jobs:
   Publish:
     runs-on: ubuntu-latest
     steps:
       - name: Get Wix CLI
         run: npm i -g @wix/cli
-      - name: Login
+      - name: Login to Wix
         run: wix login --api-key ${{ secrets.WIX_CLI }}
       - name: Check out site config
         uses: actions/checkout@v4
