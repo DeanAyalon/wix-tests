@@ -1,6 +1,16 @@
 // Initialize GitGraph.js
 const gitgraph = new GitGraph({
     template: {
+        colors: [
+            'grey',         // ts
+            'blue',         // main
+            'magenta',      // help/icess
+            'orange',       // demo/anchor
+            'limegreen',    // feature - timestamp
+            'limegreen',    // feature - gitgraph
+            'teal',         // test/revert
+            'limegreen',    // feature - gitgraph
+        ],
         branch: {
             lineWidth: 8,
             spacingX: 20,
@@ -129,5 +139,10 @@ branch.revert = gitgraph.branch('test/revert')
     .commit('Restoring a previous version of the site creates an identical UI version, code is not reverted when integrating with GitHub')
     .merge(branch.main, "Merge branch 'test/revert'")
 
+// Present
+branch.graph = gitgraph.branch('gitgraph')
+    .commit('Color GitGraph')
+
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')
+    merge(branch.graph, "Merge branch 'gitgraph'")
