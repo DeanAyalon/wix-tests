@@ -3,6 +3,7 @@
 
 <head>
     <title>Wix Demos - GitGraph</title>
+    <!-- Load gitgraph-js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gitgraph.js/1.15.2/gitgraph.js"></script>
     <style>
         /* Center everything */
@@ -21,13 +22,23 @@
         <a href="https://deanayalon.github.io/wix-tests/iframes/graph">GitHub Pages</a> 
         for easy source control!
     </p>
-    <a href="https://github.com/deanayalon/wix-tests">
+    <a href="https://github.com/DeanAyalon/wix-tests/tree/main/iframes">
         <img alt="Source" src="https://img.shields.io/badge/Source-121011?style=for-the-badge&logo=github&logoColor=white" />
     </a>
 
     <h2 style="margin-bottom: -50px;">Repository Git Graph:</h2>
     <canvas id="gitGraph"></canvas>
     <script src="graph.js"></script>
+    <p>
+        This iFrame currently uses the long-deprecated
+        <a href="https://www.npmjs.com/package/gitgraph.js">gitgraph.js</a> package. <br />
+
+        An update to
+        <a href="https://github.com/nicoespeon/gitgraph.js">@gitgraph/js</a> 
+        (also recently deprecated) or 
+        <a href="https://github.com/mermaid-js/mermaid">mermaid</a>
+        is planned
+    </p>
 </body>
 
 </html>

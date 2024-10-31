@@ -1,9 +1,6 @@
 // Initialize GitGraph.js
-// const context = document.getElementById("gitGraph").getContext("2d");
 const gitgraph = new GitGraph({
-    // generateCommitHash: false,
     template: {
-        // colors: ["#979797", "#008fb5", "#f1c109"],
         branch: {
             lineWidth: 8,
             spacingX: 20,
@@ -17,7 +14,6 @@ const gitgraph = new GitGraph({
     },
     orientation: "vertical-reverse",
     author: '', // 'Dean Ayalon <dev@deanayalon.com>',
-    // canvas: context,
 })
 
 // Create orphan branches
@@ -121,16 +117,13 @@ branch.main.commit('Add documentation, only last line in release.js will be repl
     .commit('Visualize Git graph in iFrame, remove unused pages')
 
 // GitGraph iFrame
-branch.graph = gitgraph.branch('graph')
+branch.graph = gitgraph.branch('gitgraph')
     .commit('Visualize Git graph in iFrame, remove unused pages')
     .commit('Clean code and add "Uncommitted changes"')
-    .merge(branch.main, "Merge branch 'graph'")
+    .merge(branch.main, "Merge branch 'gitgraph'")
+
+// UI revert test
+branch.main.commit('Move GitGraph iFrame to home page')
 
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')
-// branch.uncommitted = gitgraph.branch({
-//         name: 'uncommitted changes',
-//         parentBranch: branch.main,
-//         color: '#666',
-//         lineDash: [12, 4, 6, 4]
-//     }).commit('Always playing with stuff...')
