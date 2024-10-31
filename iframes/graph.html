@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Wix Demos - GitGraph</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gitgraph.js/1.15.2/gitgraph.js"></script>
+    <style>
+        /* Center everything */
+        body {
+            display: block;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+    <base target="_blank" /><!-- Links open in a new window -->
+</head>
+
+<body>
+    <p>
+        Even this iFrame is hosted on 
+        <a href="https://deanayalon.github.io/wix-tests/iframes/graph">GitHub Pages</a> 
+        for easy source control!
+    </p>
+    <a href="https://github.com/deanayalon/wix-tests">
+        <img alt="Source" src="https://img.shields.io/badge/Source-121011?style=for-the-badge&logo=github&logoColor=white" />
+    </a>
+
+    <h2 style="margin-bottom: -50px;">Repository Git Graph:</h2>
+    <canvas id="gitGraph"></canvas>
+    <script src="graph.js"></script>
+</body>
+
+</html>
