@@ -1,6 +1,6 @@
 name: Publish Site with Timestamp
 run-name: ${{ github.actor }} has updated the main branch, publishing site with timestamp
-on: 
+on:
   push:
     branches: main
     paths:

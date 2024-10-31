@@ -1,6 +1,14 @@
 // Initialize GitGraph.js
 const gitgraph = new GitGraph({
     template: {
+        colors: [
+            'blue',         // main
+            'grey',         // abandoned
+            'magenta',      // help
+            'orange',       // demo
+            'limegreen',    // feature
+            'teal',         // test
+        ],
         branch: {
             lineWidth: 8,
             spacingX: 20,
@@ -13,30 +21,29 @@ const gitgraph = new GitGraph({
         }
     },
     orientation: "vertical-reverse",
-    author: '', // 'Dean Ayalon <dev@deanayalon.com>',
+    author: 'Dean',
 })
 
-// Create orphan branches
-const branch = {
-    ts: gitgraph.branch({ 
-        name: 'ts',
+// Create orphan main branch
+const branch = { main: gitgraph.branch('main') }
+// Define authors
+const author = { ts: 'Algimantas Krasauskas <algimantask@wix.com>' }
+
+// Forked ts branch
+branch.ts = gitgraph.branch({ 
+    name: 'ts',
         lineWidth: 4,
-        lineDash: [8, 4],
-        // commitDefaultOptions: { dot: { size: 3 } } 
-    }),
+        lineDash: [8, 4]
+    })
+    .commit({ message: 'Initial commit', author: 'Velo' })
+    .commit({ message: 'added Typescript code', author: author.ts })
+    .commit({ message: 'Create LICENSE', author: author.ts })
 
-    main: gitgraph.branch('main')
-}
-
-// Initial ts branch
-branch.ts.commit('Initial commit')
-    .commit('added typescript code')
-    .commit('Create LICENSE')
-branch.main.commit('Initial commit')
-branch.ts.commit(
-    'Fix: npm run preview for MacOS, extracted into scripts/preview.sh\n' + 
-    'Configure wix.config for my own demo website'
-)
+// Project start
+branch.main
+    .commit({ message: 'Initial commit', author: 'Velo' })
+branch.ts
+    .commit('Fix: npm run preview for MacOS, modify wix.config for my own site')
 
 // Main branch development
 branch.main.commit('Add images demo for alternating image on hover')
@@ -80,54 +87,61 @@ branch.main.commit('Add images demo for alternating image on hover')
     .commit('Add blog page')
     .commit('Publish workflow - Get Wix CLI step name fix')
 
-// help/icess
-branch.icess = gitgraph.branch('help/icess')
-    .commit('Code as created by icess')
-    .commit('Fix code errors - Asynchronous execution and Wix web-module protocol')
-    .commit('UI: Remove search bar from header')
+// Gelp - icess
+branch.help = branch.main.branch('help')        // using gitgraph.branch() branches off from the ts branch for some reason
+    .commit('help/icess - Code as created by icess')
+    .commit('help/icess - Fix code errors - Asynchronous execution and Wix web-module protocol')
+    .commit('help/icess - UI: Remove search bar from header')
     .merge(branch.main, "Merge branch 'help/icess'")
 
-// demo/anchor
-branch.anchor = gitgraph.branch('demo/anchor')
-    .commit('Anchor demo - UI, test url#anchor')
-    .commit('Anchor demo - Add functionality using URL query')
-    .commit('Test scrollTo before page load')
-    .commit('Test succeeded - format code')
+// Demo - Anchor
+branch.demo = gitgraph.branch('demo')
+    .commit('demo/anchor - UI, test url#anchor')
+    .commit('demo/anchor - Add functionality using URL query')
+    .commit('demo/anchor - Test scrollTo before page load')
+    .commit('demo/anchor - Test succeeded, format code')
     .merge(branch.main, "Merge branch 'demo/anchor'")
 
-// timestamp branch
-branch.timestamp = gitgraph.branch('timestamp')
-    .commit('Removing default Wix template code')
-    .commit('Test timed publish workflow')
-    .commit('Debug script not found - ls')
-    .commit('Trigger workflow when it updates')
-    .commit('Fix sparse checkout paths')
-    .commit('Fix ls command separation')
-    .commit('.github not cloned; Surround .github with quotation marks to see if it helps')
-    .commit('Clone entire .github dir')
-    .commit('Show timestamp on homepage')
-    .commit('Link to workflow run')
-    .commit('Clean up for main')
-    .merge(branch.main, "Merge branch 'timestamp'")
+// Feature - Timestamp
+branch.feature = gitgraph.branch('feature')
+    .commit('feature/timestamp - Removing default Wix template code')
+    .commit('feature/timestamp - Test timed publish workflow')
+    .commit('feature/timestamp - Debug script not found - ls')
+    .commit('feature/timestamp - Trigger workflow when it updates')
+    .commit('feature/timestamp - Fix sparse checkout paths')
+    .commit('feature/timestamp - Fix ls command separation')
+    .commit('feature/timestamp - .github not cloned; Surround .github with quotation marks to see if it helps')
+    .commit('feature/timestamp - Clone entire .github dir')
+    .commit('feature/timestamp - Show timestamp on homepage')
+    .commit('feature/timestamp - Link to workflow run')
+    .commit('feature/timestamp - Clean up for main')
+    .merge(branch.main, "Merge branch 'feature/timestamp'")
 
 // Main branch development
-branch.main.commit('Add documentation, only last line in release.js will be replaced - preserves comments')
+branch.main
+    .commit('Add documentation, only last line in release.js will be replaced - preserves comments')
     .commit('Print release.js to debug comments not appearing on site')
     .commit('Fix: head -n -1 cannot write to the file it reads from')
     .commit('Visualize Git graph in iFrame, remove unused pages')
 
-// GitGraph iFrame
-branch.graph = gitgraph.branch('gitgraph')
-    .commit('Visualize Git graph in iFrame, remove unused pages')
-    .commit('Clean code and add "Uncommitted changes"')
-    .merge(branch.main, "Merge branch 'gitgraph'")
+// Feature - GitGraph iFrame
+branch.main.merge(branch.feature, 'feature/gitgraph - Visualize Git graph in iFrame, remove unused pages')
+branch.feature
+    .commit('feature/gitgraph - Clean code and add "Uncommitted changes"')
+    .merge(branch.main, "Merge branch 'feature/gitgraph'")
 branch.main.commit('Move GitGraph iFrame to home page')
 
-// UI revert test
-branch.revert = gitgraph.branch('test/revert')
-    .commit('Move release to test reverting UI')
-    .commit('Restoring a previous version of the site creates an identical UI version, code is not reverted when integrating with GitHub')
+// Test - Site version revert
+branch.test = gitgraph.branch('test')
+    .commit('test/revert - Move release to test reverting UI')
+    .commit('test/revert - Restoring a previous version of the site creates an identical UI version, code is not reverted when integrating with GitHub')
     .merge(branch.main, "Merge branch 'test/revert'")
+
+// Present
+branch.main.merge(branch.feature, 'Color GitGraph')
+branch.feature
+    .commit('Design a more gitflow-like graph due to API limitations')
+    .merge(branch.main, "Merge branch 'feature/gitgraph'")
 
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')
