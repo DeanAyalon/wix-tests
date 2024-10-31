@@ -1,6 +1,6 @@
 import { timestamp, commit, run } from "public/release"
-import wixLocation from 'wix-location-frontend'
 
+console.log('TEST')
 console.log(`Welcome to my demo website!
     This is used for tests and demonstrations, usually when helping people in the forums
     This site is published automatically on commit using GitHub Actions

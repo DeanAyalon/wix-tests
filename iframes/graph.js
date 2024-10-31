@@ -121,9 +121,13 @@ branch.graph = gitgraph.branch('gitgraph')
     .commit('Visualize Git graph in iFrame, remove unused pages')
     .commit('Clean code and add "Uncommitted changes"')
     .merge(branch.main, "Merge branch 'gitgraph'")
+branch.main.commit('Move GitGraph iFrame to home page')
 
 // UI revert test
-branch.main.commit('Move GitGraph iFrame to home page')
+branch.revert = gitgraph.branch('test/revert')
+    .commit('Move release to test reverting UI')
+    .commit('Restoring a previous version of the site creates an identical UI version, code is not reverted when integrating with GitHub')
+    .merge(branch.main, "Merge branch 'test/revert'")
 
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')
