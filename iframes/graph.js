@@ -1,96 +1,135 @@
 // Initialize GitGraph.js
-const context = document.getElementById("gitGraph").getContext("2d");
+// const context = document.getElementById("gitGraph").getContext("2d");
 const gitgraph = new GitGraph({
-    // template: "metro",
+    // generateCommitHash: false,
+    template: {
+        // colors: ["#979797", "#008fb5", "#f1c109"],
+        branch: {
+            lineWidth: 8,
+            spacingX: 20,
+            labelRotation: 0
+        },
+        commit: {
+            spacingY: -40,
+            dot: { size: 12 },
+            message: { font: "normal 14pt Arial" }
+        }
+    },
     orientation: "vertical-reverse",
+    author: '', // 'Dean Ayalon <dev@deanayalon.com>',
     // canvas: context,
 })
 
-// Add branches and commits
+// Create orphan branches
 const branch = {
-    ts: gitgraph.branch('ts'),
+    ts: gitgraph.branch({ 
+        name: 'ts',
+        lineWidth: 4,
+        lineDash: [8, 4],
+        // commitDefaultOptions: { dot: { size: 3 } } 
+    }),
+
     main: gitgraph.branch('main')
 }
+
+// Initial ts branch
 branch.ts.commit('Initial commit')
-branch.ts.commit('added typescript code')
-branch.ts.commit('Create LICENSE')
+    .commit('added typescript code')
+    .commit('Create LICENSE')
 branch.main.commit('Initial commit')
 branch.ts.commit(
     'Fix: npm run preview for MacOS, extracted into scripts/preview.sh\n' + 
     'Configure wix.config for my own demo website'
 )
 
+// Main branch development
 branch.main.commit('Add images demo for alternating image on hover')
-branch.main.commit('Images demo - Add show/hide image elements for comparison')
-branch.main.commit('Changed Images page to Demos/Alternate Images, cleaned UI')
-branch.main.commit('UI: demos/alt-img - Add info')
-branch.main.commit('Documentation')
-branch.main.commit('Test out table sorting')
-branch.main.commit('Add demo - Table sort')
-branch.main.commit('UI: Add Demos/Table Sort to menu')
-branch.main.commit('Fix: r/WixHelp link was not updated on live site deployment')
-branch.main.commit('Rename pages and add Sandbox page')
-branch.main.commit('Convert help thread button at the bottom of demo pages into dynamic global section')
-branch.main.commit('Dynamic help button styling error')
-branch.main.commit('Fix: #thread button style')
-branch.main.commit('Change Demo/Pages to Demo - Pages, as @wix/cli jsconfig is generated wrong')
-branch.main.commit('Implement demo - Gallery Actions')
-branch.main.commit('Clean masterPage code')
-branch.main.commit('Add Input_beforeInsert data hook')
-branch.main.commit('UI: Sandbox - Add form for data hook')
-branch.main.commit('Sandbox - Add #spoiler, #spoilerText')
-branch.main.commit('Site - Add Wix-Stores; Sandbox - add store/products to store/collections queryReference')
-branch.main.commit('Sandbox - Disable Store/Products.collections queryReference')
-branch.main.commit('Add coupon query to Cart Page, add Cart button to Sandbox')
-branch.main.commit('Add fade lightbox to rest fadeout, Test Wix apps, plan two demos (abandoned)')
-branch.main.commit('Imaplement fade lightbox')
-branch.main.commit('Add WixChat for testing purposes')
-branch.main.commit('Add multilingual demo automatically switching to Hebrew')
-branch.main.commit('Add demo - hide all: Hides all elements on the page')
-branch.main.commit('Add iFrame for hosting on GitHub Pages')
-branch.main.commit('Add Demo - Git iFrame')
-branch.main.commit('Git iFrame demo - Menu and URL')
-branch.main.commit('Add script to preview and open in browser')
-branch.main.commit('Add repo badge button to test iFrame')
-branch.main.commit('Test iFrame - Open links on parent window')
-branch.main.commit('GitHub Action to automatically publish site')
-branch.main.commit('Test GitHub job condition')
-branch.main.commit('Dump job condition for workflow branch restriction')
-branch.main.commit('Limit publish action to when source files or UI version are changed')
-branch.main.commit('Change homepage log message to test publish action')
-branch.main.commit('Add blog page')
-branch.main.commit('Publish workflow - Get Wix CLI step name fix')
+    .commit('Images demo - Add show/hide image elements for comparison')
+    .commit('Changed Images page to Demos/Alternate Images, cleaned UI')
+    .commit('UI: demos/alt-img - Add info')
+    .commit('Documentation')
+    .commit('Test out table sorting')
+    .commit('Add demo - Table sort')
+    .commit('UI: Add Demos/Table Sort to menu')
+    .commit('Fix: r/WixHelp link was not updated on live site deployment')
+    .commit('Rename pages and add Sandbox page')
+    .commit('Convert help thread button at the bottom of demo pages into dynamic global section')
+    .commit('Dynamic help button styling error')
+    .commit('Fix: #thread button style')
+    .commit('Change Demo/Pages to Demo - Pages, as @wix/cli jsconfig is generated wrong')
+    .commit('Implement demo - Gallery Actions')
+    .commit('Clean masterPage code')
+    .commit('Add Input_beforeInsert data hook')
+    .commit('UI: Sandbox - Add form for data hook')
+    .commit('Sandbox - Add #spoiler, #spoilerText')
+    .commit('Site - Add Wix-Stores; Sandbox - add store/products to store/collections queryReference')
+    .commit('Sandbox - Disable Store/Products.collections queryReference')
+    .commit('Add coupon query to Cart Page, add Cart button to Sandbox')
+    .commit('Add fade lightbox to rest fadeout, Test Wix apps, plan two demos (abandoned)')
+    .commit('Imaplement fade lightbox')
+    .commit('Add WixChat for testing purposes')
+    .commit('Add multilingual demo automatically switching to Hebrew')
+    .commit('Add demo - hide all: Hides all elements on the page')
+    .commit('Add iFrame for hosting on GitHub Pages')
+    .commit('Add Demo - Git iFrame')
+    .commit('Git iFrame demo - Menu and URL')
+    .commit('Add script to preview and open in browser')
+    .commit('Add repo badge button to test iFrame')
+    .commit('Test iFrame - Open links on parent window')
+    .commit('GitHub Action to automatically publish site')
+    .commit('Test GitHub job condition')
+    .commit('Dump job condition for workflow branch restriction')
+    .commit('Limit publish action to when source files or UI version are changed')
+    .commit('Change homepage log message to test publish action')
+    .commit('Add blog page')
+    .commit('Publish workflow - Get Wix CLI step name fix')
 
+// help/icess
 branch.icess = gitgraph.branch('help/icess')
-branch.icess.commit('Code as created by icess')
-branch.icess.commit('Fix code errors - Asynchronous execution and Wix web-module protocol')
-branch.icess.commit('UI: Remove search bar from header')
-branch.icess.merge(branch.main, "Merge branch 'help/icess'")
+    .commit('Code as created by icess')
+    .commit('Fix code errors - Asynchronous execution and Wix web-module protocol')
+    .commit('UI: Remove search bar from header')
+    .merge(branch.main, "Merge branch 'help/icess'")
 
+// demo/anchor
 branch.anchor = gitgraph.branch('demo/anchor')
-branch.anchor.commit('Anchor demo - UI, test url#anchor')
-branch.anchor.commit('Anchor demo - Add functionality using URL query')
-branch.anchor.commit('Test scrollTo before page load')
-branch.anchor.commit('Test succeeded - format code')
-branch.anchor.merge(branch.main, "Merge branch 'demo/anchor'")
+    .commit('Anchor demo - UI, test url#anchor')
+    .commit('Anchor demo - Add functionality using URL query')
+    .commit('Test scrollTo before page load')
+    .commit('Test succeeded - format code')
+    .merge(branch.main, "Merge branch 'demo/anchor'")
 
+// timestamp branch
 branch.timestamp = gitgraph.branch('timestamp')
-branch.timestamp.commit('Removing default Wix template code')
-branch.timestamp.commit('Test timed publish workflow')
-branch.timestamp.commit('Debug script not found - ls')
-branch.timestamp.commit('Trigger workflow when it updates')
-branch.timestamp.commit('Fix sparse checkout paths')
-branch.timestamp.commit('Fix ls command separation')
-branch.timestamp.commit('.github not cloned; Surround .github with quotation marks to see if it helps')
-branch.timestamp.commit('Clone entire .github dir')
-branch.timestamp.commit('Show timestamp on homepage')
-branch.timestamp.commit('Link to workflow run')
-branch.timestamp.commit('Clean up for main')
-branch.timestamp.merge(branch.main, "Merge branch 'timestamp'")
+    .commit('Removing default Wix template code')
+    .commit('Test timed publish workflow')
+    .commit('Debug script not found - ls')
+    .commit('Trigger workflow when it updates')
+    .commit('Fix sparse checkout paths')
+    .commit('Fix ls command separation')
+    .commit('.github not cloned; Surround .github with quotation marks to see if it helps')
+    .commit('Clone entire .github dir')
+    .commit('Show timestamp on homepage')
+    .commit('Link to workflow run')
+    .commit('Clean up for main')
+    .merge(branch.main, "Merge branch 'timestamp'")
 
+// Main branch development
 branch.main.commit('Add documentation, only last line in release.js will be replaced - preserves comments')
-branch.main.commit('Print release.js to debug comments not appearing on site')
-branch.main.commit('Fix: head -n -1 cannot write to the file it reads from')
+    .commit('Print release.js to debug comments not appearing on site')
+    .commit('Fix: head -n -1 cannot write to the file it reads from')
+    .commit('Visualize Git graph in iFrame, remove unused pages')
 
+// GitGraph iFrame
 branch.graph = gitgraph.branch('graph')
-branch.graph.commit('Visualize Git graph in iFrame, remove unused pages')
+    .commit('Visualize Git graph in iFrame, remove unused pages')
+    .commit('Clean code and add "Uncommitted changes"')
+
+// Uncommitted changes
+branch.main.commit('[Uncommitted changes] Always playing with stuff...')
+// branch.uncommitted = gitgraph.branch({
+//         name: 'uncommitted changes',
+//         parentBranch: branch.main,
+//         color: '#666',
+//         lineDash: [12, 4, 6, 4]
+//     }).commit('Always playing with stuff...')
