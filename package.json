@@ -8,6 +8,7 @@
   "scripts": {
     "postinstall": "wix sync-types",
     "preview": "/bin/sh preview.sh",
+    "browse": "echo https://yaron-ayalon.wixstudio.io/tests | xargs open",
     "dev": "wix dev",
     "lint": "eslint ."
   }
