@@ -3,4 +3,4 @@
     
 // https://github.com/deanayalon/wix-tests/tree/main/.github/workflows/publish-timed.yml
 
-export const timestamp = '', commit = '', run = ''
+export const timestamp = '', commit = '', run = '', ui = ''
