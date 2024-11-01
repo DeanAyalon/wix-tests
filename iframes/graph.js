@@ -157,6 +157,9 @@ branch.main.merge(branch.feature, 'feature/home-page - Redesign home page with r
 branch.feature
     .commit('Dump rich text for iFrame (For version control), remove dataset from home page')
     .merge(branch.main, "Merge branch 'feature/redesign'")
+    .commit('Revert back to using rich-text, create backend/exec.js to extract rich-content HTML for VCS')
+    .commit('Add to welcome text, minor UI tidying')
+    .merge(branch.main, "Merge branch 'feature/redesign'")
 
 // Uncommitted changes
-branch.main.commit('[Uncommitted changes] Always playing with stuff...')
+branch.main.commit('(Uncommitted changes) Always playing with stuff...')
