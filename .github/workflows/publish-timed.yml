@@ -2,7 +2,9 @@ name: Publish Site with Timestamp
 run-name: ${{ github.actor }} has updated the main branch, publishing site with timestamp
 on:
   push:
-    branches: main
+    branches: 
+        - main
+        - feature/redesign
     paths:
       - 'src/**'
       - wix.config.json

@@ -102,17 +102,17 @@ branch.demo = gitgraph.branch('demo')
     .commit('demo/anchor - Test succeeded, format code')
     .merge(branch.main, "Merge branch 'demo/anchor'")
 
-// Feature - Timestamp
+// Feature - GitHub Actions
 branch.feature = gitgraph.branch('feature')
-    .commit('feature/timestamp - Removing default Wix template code')
-    .commit('feature/timestamp - Test timed publish workflow')
-    .commit('feature/timestamp - Debug script not found - ls')
-    .commit('feature/timestamp - Trigger workflow when it updates')
-    .commit('feature/timestamp - Fix sparse checkout paths')
-    .commit('feature/timestamp - Fix ls command separation')
-    .commit('feature/timestamp - .github not cloned; Surround .github with quotation marks to see if it helps')
-    .commit('feature/timestamp - Clone entire .github dir')
-    .commit('feature/timestamp - Show timestamp on homepage')
+    .commit('feature/gh-actions - Removing default Wix template code')
+    .commit('feature/gh-actions - Test timed publish workflow')
+    .commit('feature/gh-actions - Debug script not found - ls')
+    .commit('feature/gh-actions - Trigger workflow when it updates')
+    .commit('feature/gh-actions - Fix sparse checkout paths')
+    .commit('feature/gh-actions - Fix ls command separation')
+    .commit('feature/gh-actions - .github not cloned; Surround .github with quotation marks to see if it helps')
+    .commit('feature/gh-actions - Clone entire .github dir')
+    .commit('feature/gh-actions - Show timestamp on homepage')
     .commit('feature/timestamp - Link to workflow run')
     .commit('feature/timestamp - Clean up for main')
     .merge(branch.main, "Merge branch 'feature/timestamp'")
@@ -144,6 +144,13 @@ branch.feature
     .merge(branch.main, "Merge branch 'feature/gitgraph'")
 branch.main
     .commit('Comments and minor changes to publish workflows')
+
+// Help - A_Kirk
+    .merge(branch.help, "help/A_Kirk - Retrieve product's collections")
+
+// Feature - GitHub Actions
+    .merge(branch.feature, 'feature/gh-actions - Add UI version to release.js')
+branch.feature.merge(branch.main, "Merge branch 'feature/gh-actions'")
 
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')
