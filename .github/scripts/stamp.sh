@@ -3,10 +3,14 @@
 # Context - repository root dir
 cd "$(dirname "$0")/../.."
 
-# Get timestamp and branch
+# Get GitHub Actions run ID
+if [ -z $RUN ]; then 
+    echo \$RUN not defined, is this not running within a GitHub Action workflow? 
+    exit 1
+fi
+# Get timestamp, commit, and UI version
 timestamp=$(date)
 commit=$(git rev-parse HEAD)
-[ -z $RUN ] && exit 1
 ui=$(jq .uiVersion wix.config.json)
 
 # Update release.js

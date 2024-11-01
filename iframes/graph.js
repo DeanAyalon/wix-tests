@@ -163,5 +163,6 @@ branch.feature
 
 branch.main
     .commit('Fill package.json')
+    .commit('GitHub Actions stamp script - Error when $RUN undefined')
 // Uncommitted changes
 branch.main.commit('(Uncommitted changes) Always playing with stuff...')
