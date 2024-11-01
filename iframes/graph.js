@@ -152,5 +152,11 @@ branch.main
     .merge(branch.feature, 'feature/gh-actions - Add UI version to release.js')
 branch.feature.merge(branch.main, "Merge branch 'feature/gh-actions'")
 
+// Feature - Home page redesign
+branch.main.merge(branch.feature, 'feature/home-page - Redesign home page with rich welcome text, add demos to menu')
+branch.feature
+    .commit('Dump rich text for iFrame (For version control), remove dataset from home page')
+    .merge(branch.main, "Merge branch 'feature/redesign'")
+
 // Uncommitted changes
 branch.main.commit('[Uncommitted changes] Always playing with stuff...')
