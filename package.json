@@ -1,15 +1,38 @@
 {
-  "devDependencies": {
-    "@wix/cli": "^1.0.0",
-    "@wix/eslint-plugin-cli": "^1.0.0",
-    "eslint": "^8.25.0",
-    "react": "16.14.0"
-  },
-  "scripts": {
-    "postinstall": "wix sync-types",
-    "preview": "/bin/sh preview.sh",
-    "browse": "echo https://yaron-ayalon.wixstudio.io/tests | xargs open",
-    "dev": "wix dev",
-    "lint": "eslint ."
-  }
+    "name": "@deanayalon/wix-tests",
+    "version": "1.0.0",
+    "description": "Source code for my Wix tests and demos website",
+    "author": {
+        "name": "Dean Ayalon",
+        "email": "dev@deanayalon.com",
+        "url": "https://github.com/deanayalon"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/deanayalon/wix-tests"
+    },
+    "bugs": {
+        "email": "dev@deanayalon.com",
+        "url": "https://github.com/deanayalon/wix-tests/issues"
+    },
+    "homepage": "https://yaron-ayalon.wixstudio.io/tests",
+
+    "devDependencies": {
+        "@wix/cli": "^1.0.0",
+        "@wix/eslint-plugin-cli": "^1.0.0",
+        "eslint": "^8.25.0",
+        "react": "16.14.0"
+    },
+
+    "scripts": {
+        "postinstall": "npm run sync",
+        "sync": "wix sync-types",
+        "preview": "/bin/sh preview.sh",
+        "open": "echo https://yaron-ayalon.wixstudio.io/tests | xargs open",
+        "dev": "wix dev",
+        "lint": "eslint ."
+    }
 }

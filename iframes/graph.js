@@ -161,5 +161,7 @@ branch.feature
     .commit('Add to welcome text, minor UI tidying')
     .merge(branch.main, "Merge branch 'feature/redesign'")
 
+branch.main
+    .commit('Fill package.json')
 // Uncommitted changes
 branch.main.commit('(Uncommitted changes) Always playing with stuff...')
