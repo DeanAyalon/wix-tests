@@ -1,0 +1,5 @@
+/* Demo - Cursors */
+.help { cursor: help }
+.alias { cursor: alias }
+.zoom { cursor: zoom-in }
+.copy { cursor: copy }
