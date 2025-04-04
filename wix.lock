@@ -21,21 +21,121 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
     ],\
     "fallbackPool": [\
+      [\
+        "@babel/runtime",\
+        "npm:7.27.0"\
+      ],\
+      [\
+        "@wix/monitoring-types",\
+        "npm:0.9.0"\
+      ],\
+      [\
+        "@wix/sdk-context",\
+        "npm:0.0.1"\
+      ],\
+      [\
+        "@wix/sdk-runtime",\
+        "npm:0.3.40"\
+      ],\
+      [\
+        "@wix/sdk-types",\
+        "npm:1.13.7"\
+      ],\
+      [\
+        "@wix/site-location",\
+        "npm:1.25.0"\
+      ],\
+      [\
+        "regenerator-runtime",\
+        "npm:0.14.1"\
+      ]\
     ],\
     "packageRegistryData": [\
       [null, [\
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@wix/site-location", "npm:1.25.0"]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@babel/runtime", [\
+        ["npm:7.27.0", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/@babel-runtime-npm-7.27.0-67ce9cb54f-8c0.zip/node_modules/@babel/runtime/",\
+          "packageDependencies": [\
+            ["@babel/runtime", "npm:7.27.0"],\
+            ["regenerator-runtime", "npm:0.14.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@wix/monitoring-types", [\
+        ["npm:0.9.0", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/@wix-monitoring-types-npm-0.9.0-337aa839a7-8c0.zip/node_modules/@wix/monitoring-types/",\
+          "packageDependencies": [\
+            ["@wix/monitoring-types", "npm:0.9.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@wix/sdk-context", [\
+        ["npm:0.0.1", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/@wix-sdk-context-npm-0.0.1-0a19b890e4-8c0.zip/node_modules/@wix/sdk-context/",\
+          "packageDependencies": [\
+            ["@wix/sdk-context", "npm:0.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@wix/sdk-runtime", [\
+        ["npm:0.3.40", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/@wix-sdk-runtime-npm-0.3.40-f73e3935da-8c0.zip/node_modules/@wix/sdk-runtime/",\
+          "packageDependencies": [\
+            ["@wix/sdk-runtime", "npm:0.3.40"],\
+            ["@wix/sdk-context", "npm:0.0.1"],\
+            ["@wix/sdk-types", "npm:1.13.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@wix/sdk-types", [\
+        ["npm:1.13.7", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/@wix-sdk-types-npm-1.13.7-d9e70615fd-8c0.zip/node_modules/@wix/sdk-types/",\
+          "packageDependencies": [\
+            ["@wix/sdk-types", "npm:1.13.7"],\
+            ["@wix/monitoring-types", "npm:0.9.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@wix/site-location", [\
+        ["npm:1.25.0", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/@wix-site-location-npm-1.25.0-5513b2b8da-8c0.zip/node_modules/@wix/site-location/",\
+          "packageDependencies": [\
+            ["@wix/site-location", "npm:1.25.0"],\
+            ["@babel/runtime", "npm:7.27.0"],\
+            ["@wix/sdk-runtime", "npm:0.3.40"],\
+            ["@wix/sdk-types", "npm:1.13.7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["regenerator-runtime", [\
+        ["npm:0.14.1", {\
+          "packageLocation": "../dynamic-modules/yarn-cache/cache/regenerator-runtime-npm-0.14.1-a6c97c609a-8c0.zip/node_modules/regenerator-runtime/",\
+          "packageDependencies": [\
+            ["regenerator-runtime", "npm:0.14.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["user-code", [\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["user-code", "workspace:."]\
+            ["user-code", "workspace:."],\
+            ["@wix/site-location", "npm:1.25.0"]\
           ],\
           "linkType": "SOFT"\
         }]\

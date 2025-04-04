@@ -6,7 +6,7 @@ const path = wixLocation.path.join('/')
 // Called before page loads - Get the help thread related to the current page
 const helpThreadPromise = wixData.query('HelpThreads').eq('path', path).find().then(res => {
     if (!res.length) return;
-    const thread = res.items[0], 
+    const thread = res.items[0],
         domain = new URL(thread.source).hostname
     return {
         forumPromise: wixData.query('HelpForums').eq('domain', domain).find(),
